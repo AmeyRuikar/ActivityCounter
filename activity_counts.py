@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import sys
 import time
+
 from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
@@ -9,6 +10,11 @@ from pyspark.streaming.kafka import KafkaUtils
 
 # Function to create and setup a new StreamingContext
 def functionToCreateContext(brokers, topic):
+    """
+    initialize the Spark context and set checkpointing
+    also, define the Direct Stream from Kafka and the
+    transformations.
+    """
 
     sc = SparkContext(appName='ActivityCounts')  # new context
     ssc = StreamingContext(sc, 30)
@@ -29,6 +35,10 @@ def functionToCreateContext(brokers, topic):
 
 
 def updateFunc(new_value, running_value):
+    """
+    takes in the old value and the new value for
+    a particular key
+    """
 
     if not running_value:
         running_value = 0
