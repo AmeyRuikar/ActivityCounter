@@ -64,4 +64,7 @@ Time: 2019-04-27 19:09:30
 
 ```
 
+While the Spark app is running you can also view the Spark UI at http://10.0.0.44:4040/streaming
+
+![spark ui](./docs/images/ui.png)
 
